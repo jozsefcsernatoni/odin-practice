@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--In this exercise, we want you to build a dynamic shopping list that allows you to add items using a form input and a button. After you type an item in the input field and click the button or press the Enter key, the following should happen:
+
+The item should appear in the list.
+Each item should have a button next to it that removes the item from the list when clicked.
+The input fields should be cleared and focused, ready for the next item entry.-->
+<h1>My shopping list</h1>
+<div id="divForm">
+    Enter a new item:
+    <input type="text" id="divText">
+    <input type="button" value="Add item" id="divBtn">
+</div>   
+    <ul id="divUl"></ul>
+</div>
+
+<script>
+//creating handles for existing elements
+const divText=document.querySelector("#divText");
+divText.focus();
+const divUl=document.querySelector("#divUl");
+const divBtn=document.querySelector("#divBtn");
+
+
+divBtn.addEventListener("click",addItem);
+divText.addEventListener("keypress", function(event){
+    if(event.key==="Enter"){
+event.preventDefault();
+divBtn.click();
+    }
+}
+);
+function addItem(){
+const myItem=document.createElement("li");
+const delBtn=document.createElement("button");
+const btnText=document.createTextNode("Delete");
+const tab=document.createElement("span");
+tab.value="&nbsp;";
+tab.setAttribute("style","display:inline-block; width:50px;");
+delBtn.appendChild(btnText);
+myItem.textContent=divText.value;
+divUl.appendChild(myItem);
+myItem.appendChild(tab);
+myItem.appendChild(delBtn);
+divText.value="";
+myItem.addEventListener("click",delItem);
+function delItem(){
+divUl.removeChild(myItem);
+}
+}
+
+</script>
+</body>
+</html>

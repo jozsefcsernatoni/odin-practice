@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let john = { name: "John", age: 25 };
+        let pete = { name: "Pete", age: 30 };
+        let mary = { name: "Mary", age: 29 };
+
+        let arr = [ john, pete, mary ];
+        function getAverageAge(myArray){
+            let sumAge=0;
+            for (index in arr){
+                sumAge+=arr[index].age;
+                
+            }
+            return sumAge/arr.length;
+        }
+
+        alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+    </script>
+</body>
+</html>
